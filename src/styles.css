@@ -3,14 +3,21 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  height: 100%;
+    background-color: rgb(105, 178, 223);
 }
 header {
   padding: 15px 10px;
   display: flex;
   gap: 30px;
   justify-content: space-around;
+  
   border: 1px solid rgb(247, 245, 245);
+  position: fixed;
+    z-index: 1;
+    background-color: #fff;
+    width: 100%;
+    top: 0;
+    /* margin-bottom: 20px; */
 }
 .logo {
   fill: rgb(29, 155, 240);
@@ -21,15 +28,16 @@ h1 {
 #app {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+    margin-top: 100px;
   gap: 20px;
-  background-color: rgb(105, 178, 223);
-  height: 100vh;
 }
+    
 #form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   gap: 10px;
 }
 .username {

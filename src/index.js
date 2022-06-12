@@ -54,9 +54,31 @@ const createTweet = (data, id) => {
     tweeta.textContent = item.tweet;
   }
   retweetButton.addEventListener("click", () => {
-    let filter = data.filter((item) => item.id === id);
-    data.concat(filter);
-    createTweet(filter, id);
+    let newest = data.filter((item) => item.id === id);
+    console.log(newsfeed.children)
+    var items = newsfeed.childNodes;
+    var itemsArr = [];
+    for (var i in items)
+    {
+      if (items[i].nodeType >= 1)
+      { // get rid of the whitespace text nodes
+        itemsArr.push(items[i]);
+      }
+    }
+
+    itemsArr.sort(function (a, b)
+    {
+      return a.innerHTML == b.innerHTML
+        ? 0
+        : (a.innerHTML < b.innerHTML ? 1 : -1);
+    });
+
+    for (i = 0; i < itemsArr.length; ++i)
+    {
+      newsfeed.appendChild(itemsArr[i]);
+    }
+    createTweet(newest, id);
+    // sortTweets()
   });
   likeButton.addEventListener("click", () => {
     tweeta.style.color = "rgb(29, 155, 240)";
@@ -72,3 +94,26 @@ const countChars = (value) => {
     counter.innerText = `${maxLngth - currentLength}/ ${maxLngth}`;
   }
 };
+
+// const repeatTweet = (newest) =>
+// {
+//   let newestTweets = document.getElementById('repeat-tweets')
+
+//   let repeat = document.createElement('p')
+//   newestTweets.appendChild(repeat);
+//   // console.log(sortNewest)
+//   for (let item of newest)
+//   {
+//     repeat.textContent = item.tweet
+//   }
+
+
+// }
+// sort elements nodes
+
+
+//
+// put repeated retweet in array
+// display array retweet to newest div contain the all divs of retweets
+// sort divs of repeated retweets
+
